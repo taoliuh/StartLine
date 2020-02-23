@@ -1,0 +1,70 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion build_version.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion build_version.minSdkVersion
+        targetSdkVersion build_version.targetSdkVersion
+        versionCode build_version.versionCode
+        versionName build_version.versionName
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // support
+    implementation libs.fragment
+    implementation libs.recyclerview
+
+    api libs.jetpack_room
+    api libs.jetpack_room_ktx
+    api libs.jetpack_room_rxjava
+    kapt libs.jetpack_room_compiler
+
+    api libs.jetpack_viewmodel
+
+    api libs.jetpack_paging
+    api libs.jetpack_paging_rxjava
+
+    // retrofit
+    api libs.retrofit
+    api libs.retrofit_gson
+    api libs.retrofit_rxjava
+
+    // rx
+    api libs.rxbinding
+
+    // autodispose
+    api libs.autodispose
+    api libs.autodispose_ktx
+    api libs.autodispose_android_ktx
+    api libs.autodispose_archs_ktx
+
+    // okhttp
+    api libs.okhttp
+    api libs.okhttp_logging
+
+    // glide
+    api libs.glide
+    kapt libs.glide_compiler
+
+    // logger
+    api libs.timber
+}
+
+configurations {
+    all*.exclude group: 'androidx.arch.core'
+}

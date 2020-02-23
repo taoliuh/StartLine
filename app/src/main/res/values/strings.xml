@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">StartLine</string>
+    <string name="back">返回</string>
+    <string name="title">标题栏</string>
+</resources>
