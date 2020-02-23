@@ -1,6 +1,6 @@
 package me.sonaive.startline.api
 
-import io.reactivex.Observable
+import io.reactivex.Flowable
 import okhttp3.ResponseBody
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -12,5 +12,5 @@ import retrofit2.http.Path
 interface OneApiService {
     @GET("/api/data/Android/{size}/{page}")
     fun getData(@Path("size") size: Int,
-                @Path("page") page: Int): Observable<ResponseBody>
+                @Path("page") page: Int): Flowable<ResponseBody>
 }

@@ -52,6 +52,7 @@ ext {
             jetpack_room_compiler       : [group: 'androidx.room', name: 'room-compiler', version: versions.arch_comp_persistence],
             jetpack_room_rxjava         : [group: 'androidx.room', name: 'room-rxjava2', version: versions.arch_comp_persistence],
 
+            arrow                       : [group: 'io.arrow-kt', name: 'arrow-core', version: '0.7.3'],
             kotlin_stdlib               : [group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jdk7', version: versions.kotlin],
 
             glide                       : [group: 'com.github.bumptech.glide', name: 'glide', version: versions.glide],
@@ -68,6 +69,8 @@ ext {
             rxkotlin                    : [group: 'io.reactivex.rxjava2', name: 'rxkotlin', version: versions.rxkotlin],
             rxandroid                   : [group: 'io.reactivex.rxjava2', name: 'rxandroid', version: versions.rxandroid],
             rxpermissions               : [group: 'com.github.tbruyelle', name: 'rxpermissions', version: '0.10.2'],
+
+            rxweaver                    : [group: 'com.github.qingmei2.rxweaver', name: 'rxweaver', version: '0.3.0'],
 
             rxbinding                   : [group: 'com.jakewharton.rxbinding3', name: 'rxbinding-core', version: versions.rxbinding],
 

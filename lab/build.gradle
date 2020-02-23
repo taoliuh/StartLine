@@ -46,12 +46,16 @@ dependencies {
 
     // rx
     api libs.rxbinding
+    api libs.rxweaver
 
     // autodispose
     api libs.autodispose
     api libs.autodispose_ktx
     api libs.autodispose_android_ktx
     api libs.autodispose_archs_ktx
+
+    // arrow
+    api libs.arrow
 
     // okhttp
     api libs.okhttp
