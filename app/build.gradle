@@ -49,4 +49,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':lab')
     implementation libs.fragment
+
+    debugImplementation libs.leak_canary_debug
+    releaseImplementation libs.leak_canary_release
 }
