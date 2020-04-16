@@ -1,9 +1,20 @@
 <resources>
-    <style name="AppTheme" parent="android:Theme.Translucent.NoTitleBar">
+    <style name="AppTheme" parent="android:Theme.NoTitleBar">
         <item name="android:windowAnimationStyle">@android:style/Animation.Activity</item>
+        <!--解决状态栏闪动的问题-->
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
-    <style name="ActivityTheme" parent="AppTheme">
-        <item name="android:background">@android:color/white</item>
+    <style name="AppThemeFullScreen" parent="android:Theme.NoTitleBar.Fullscreen">
+        <item name="android:windowAnimationStyle">@android:style/Animation.Activity</item>
+        <!--解决状态栏闪动的问题-->
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="ActivityDefaultTheme" parent="AppTheme">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/white</item>
     </style>
 </resources>

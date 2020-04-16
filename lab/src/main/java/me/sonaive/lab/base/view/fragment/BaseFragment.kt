@@ -18,8 +18,17 @@ abstract class BaseFragment : AutoDisposeFragment() {
         return mRootView!!
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binds()
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         mRootView = null
+    }
+
+    open fun binds() {
+
     }
 }

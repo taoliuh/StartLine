@@ -21,7 +21,7 @@ class GlideModule : AppGlideModule() {
 
     override fun applyOptions(context: Context, builder: GlideBuilder) {
         builder.setDiskCache(InternalCacheDiskCacheFactory(context,
-                diskCacheFolderName(context),
+                diskCacheFolderName(),
                 diskCacheSizeBytes()))
                 .setMemoryCache(LruResourceCache(memoryCacheSizeBytes().toLong()))
     }
@@ -51,7 +51,7 @@ class GlideModule : AppGlideModule() {
     /**
      * set the disk cache folder's name.
      */
-    private fun diskCacheFolderName(context: Context): String {
-        return "mvvm-rhine"
+    private fun diskCacheFolderName(): String {
+        return "imagecache"
     }
 }

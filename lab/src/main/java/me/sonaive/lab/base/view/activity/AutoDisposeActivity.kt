@@ -9,4 +9,8 @@ abstract class AutoDisposeActivity : FragmentActivity() {
     protected val scopeProvider: AndroidLifecycleScopeProvider by lazy {
         AndroidLifecycleScopeProvider.from(this, Lifecycle.Event.ON_DESTROY)
     }
+
+    protected val activeProvider: AndroidLifecycleScopeProvider by lazy {
+        AndroidLifecycleScopeProvider.from(this, Lifecycle.Event.ON_PAUSE)
+    }
 }

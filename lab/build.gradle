@@ -26,18 +26,11 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // support
-    implementation libs.fragment
-    implementation libs.recyclerview
-
-    api libs.jetpack_room
-    api libs.jetpack_room_ktx
-    api libs.jetpack_room_rxjava
-    kapt libs.jetpack_room_compiler
+    api libs.fragment
+    api libs.recyclerview
+    api libs.constraint_layout
 
     api libs.jetpack_viewmodel
-
-    api libs.jetpack_paging
-    api libs.jetpack_paging_rxjava
 
     // retrofit
     api libs.retrofit

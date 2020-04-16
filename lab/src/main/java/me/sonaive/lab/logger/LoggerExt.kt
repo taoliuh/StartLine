@@ -1,15 +1,15 @@
 package me.sonaive.lab.logger
 
-import android.app.Application
 import me.sonaive.lab.functional.Supplier
 import timber.log.Timber
 
-fun Application.initLogger(isDebug: Boolean = true) {
-    if (isDebug)
+fun initLogger(isDebug: Boolean = true) {
+    Timber.uprootAll()
+    if (isDebug) {
         Timber.plant(Timber.DebugTree())
-    else
+    } else {
         Timber.plant(CrashReportingTree())
-
+    }
     log { "initLogger successfully, isDebug = $isDebug" }
 }
 

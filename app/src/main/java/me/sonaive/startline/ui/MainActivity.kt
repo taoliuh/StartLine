@@ -1,33 +1,27 @@
 package me.sonaive.startline.ui
 
-import android.os.Bundle
-import android.view.View
+import androidx.lifecycle.ViewModelProvider
 import com.uber.autodispose.autoDisposable
+import com.wuhenzhizao.titlebar.widget.CommonTitleBar.ACTION_LEFT_TEXT
 import kotlinx.android.synthetic.main.activity_main.*
-import me.sonaive.lab.base.view.activity.BaseActivity
+import me.sonaive.lab.base.view.activity.BaseBusinessActivity
+import me.sonaive.lab.base.viewstate.BaseViewState
 import me.sonaive.lab.ext.reactivex.clicksThrottleFirst
-import me.sonaive.lab.ext.toast
-import me.sonaive.lab.logger.logd
 import me.sonaive.lab.util.RxSchedulers
 import me.sonaive.startline.R
 import me.sonaive.startline.ui.main.MainViewModel
-import me.sonaive.startline.ui.main.MainViewState
-import retrofit2.HttpException
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseBusinessActivity() {
 
     private val mViewModel: MainViewModel by lazy {
-        MainViewModel()
+        ViewModelProvider(this,
+            MainViewModel.ViewModelFactory()).get(MainViewModel::class.java)
     }
 
     override val layoutId = R.layout.activity_main
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binds()
-    }
-
-    private fun binds() {
+    override fun binds() {
+        titleBar.setListener { v, action, extra -> if (action == ACTION_LEFT_TEXT) finish() }
         helloWorld.clicksThrottleFirst().autoDisposable(scopeProvider)
             .subscribe {
                 mViewModel.getData()
@@ -38,25 +32,7 @@ class MainActivity : BaseActivity() {
             .subscribe(this::onNewState)
     }
 
-    private fun onNewState(state: MainViewState) {
-        when {
-            state.throwable != null -> when (state.throwable) {
-                is HttpException ->
-                    when (state.throwable.code()) {
-                        401 -> "bad request"
-                        else -> "network failure"
-                    }
-                else -> "network failure"
-            }.also { str ->
-                progressBar.visibility = View.GONE
-                toast { str }
-            }
-            state.result != null -> {
-                progressBar.visibility = View.GONE
-                helloWorld.text = state.result
-                logd { "load success! ${state.result}" }
-            }
-            else -> progressBar.visibility = View.VISIBLE
-        }
+    override fun <T> processData(state: BaseViewState<T>) {
+        helloWorld.text = state.result as String
     }
 }

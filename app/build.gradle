@@ -9,7 +9,7 @@ android {
         applicationId "me.sonaive.startline"
         minSdkVersion build_version.minSdkVersion
         targetSdkVersion build_version.targetSdkVersion
-        versionCode build_version.versionCode
+        versionCode gitRevision()
         versionName build_version.versionName
     }
     signingConfigs {
@@ -52,4 +52,38 @@ dependencies {
 
     debugImplementation libs.leak_canary_debug
     releaseImplementation libs.leak_canary_release
+}
+
+def static gitRevision() {
+    def cmd = 'git rev-list --all --count'
+    def codes = cmd.execute().text.trim()
+    if (codes == "" || codes == null) {
+        return 99999
+    }
+    def code = cmd.execute().text.trim().toInteger()
+    return code
+}
+
+//获取当前分支名称
+def static gitCurrentBranchName() {
+    def cmd = 'git symbolic-ref --short -q HEAD'
+    def branchName = cmd.execute().text.trim()
+    return branchName
+}
+
+//获取当前分支上最近一次提交 id
+def static gitCurrentBranchLastCommitId() {
+    def cmd = 'git rev-parse HEAD'
+    def commitIds = cmd.execute().text
+    if (commitIds == null || commitIds == "") {
+        return "unknow-commitId"
+    }
+    def commitId = cmd.execute().text.trim().substring(0, 7)
+
+    return commitId
+}
+
+task getVerCode {
+    println("ver code = " + gitRevision() + "; branchName = " + gitCurrentBranchName()
+            + "; lastCommitId = " + gitCurrentBranchLastCommitId())
 }

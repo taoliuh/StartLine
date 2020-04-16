@@ -3,6 +3,8 @@ package me.sonaive.startline
 import android.app.Application
 import com.squareup.leakcanary.LeakCanary
 import me.sonaive.lab.logger.initLogger
+import me.sonaive.lab.util.AppUtil
+import me.sonaive.lab.util.initDeviceId
 
 /**
  * Created by liutao on 2020-02-23.
@@ -18,8 +20,9 @@ open class App: Application() {
     override fun onCreate() {
         super.onCreate()
         INSTANCE = this
-
+        AppUtil.init(this)
         initLogger(BuildConfig.DEBUG)
+        initDeviceId(this)
         initLeakCanary()
     }
 

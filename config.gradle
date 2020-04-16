@@ -26,18 +26,21 @@ ext {
             rxbinding            : '3.0.0-alpha2',
             autodispose          : '1.1.0',
 
-            leakcanary           : '1.6.2'
+            leakcanary           : '1.6.2',
+            gdx                  : '1.9.10'
     ]
 
     build_plugins = [
             android_gradle: [group: 'com.android.tools.build', name: 'gradle', version: versions.android_plugin],
             kotlin_gradle : [group: 'org.jetbrains.kotlin', name: 'kotlin-gradle-plugin', version: versions.kotlin]
     ]
-
     libs = [
             fragment                    : [group: 'androidx.fragment', name: 'fragment', version: versions.support],
             recyclerview                : [group: 'androidx.recyclerview', name: 'recyclerview', version: versions.support],
             annotations                 : [group: 'androidx.annotation', name: 'annotation', version: versions.support],
+            multidex                    : [group: 'com.android.support', name: 'multidex', version:'1.0.3'],
+
+            constraint_layout           : [group: 'androidx.constraintlayout', name: 'constraintlayout', version: '2.0.0-beta4'],
 
             jetpack_lifecycle_extensions: [group: 'androidx.lifecycle', name: 'lifecycle-extensions', version: versions.arch_comp_lifecycle],
             jetpack_lifecycle_java8     : [group: 'androidx.lifecycle', name: 'lifecycle-common-java8', version: versions.arch_comp_lifecycle],
@@ -82,6 +85,11 @@ ext {
             timber                      : [group: 'com.jakewharton.timber', name: 'timber', version: '4.7.1'],
 
             leak_canary_debug           : [group: 'com.squareup.leakcanary', name: 'leakcanary-android', version: versions.leakcanary],
-            leak_canary_release         : [group: 'com.squareup.leakcanary', name: 'leakcanary-android-no-op', version: versions.leakcanary]
+            leak_canary_release         : [group: 'com.squareup.leakcanary', name: 'leakcanary-android-no-op', version: versions.leakcanary],
+
+            webview                     : [group: 'com.github.delight-im', name: 'Android-AdvancedWebView', version: 'v3.0.0'],
+
+            share                       : [group: 'gdut.bsx', name: 'share2', version:'0.9.3']
     ]
+
 }

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- -1 网络异常-->
+    <string name="EN1">网络异常，请检测网络连接</string>
+</resources>
