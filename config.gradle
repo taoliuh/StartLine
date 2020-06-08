@@ -26,14 +26,14 @@ ext {
             rxbinding            : '3.0.0-alpha2',
             autodispose          : '1.1.0',
 
-            leakcanary           : '1.6.2',
-            gdx                  : '1.9.10'
+            leakcanary           : '1.6.2'
     ]
 
     build_plugins = [
             android_gradle: [group: 'com.android.tools.build', name: 'gradle', version: versions.android_plugin],
             kotlin_gradle : [group: 'org.jetbrains.kotlin', name: 'kotlin-gradle-plugin', version: versions.kotlin]
     ]
+
     libs = [
             fragment                    : [group: 'androidx.fragment', name: 'fragment', version: versions.support],
             recyclerview                : [group: 'androidx.recyclerview', name: 'recyclerview', version: versions.support],

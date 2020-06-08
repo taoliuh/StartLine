@@ -26,7 +26,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // support
-    api libs.fragment
     api libs.recyclerview
     api libs.constraint_layout
 
@@ -60,8 +59,4 @@ dependencies {
 
     // logger
     api libs.timber
-}
-
-configurations {
-    all*.exclude group: 'androidx.arch.core'
 }
